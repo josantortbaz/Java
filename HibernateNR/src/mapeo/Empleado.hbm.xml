@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="modelo.Empleado" table="EMPLEADOS">
+    <id name="codigo" type="string" column="EMPCODIGO"/>
+
+    <property name="nombre" type="string" column="EMPNOMBRE" />
+    <property name="apellido" type="string" column="EMPAPELLIDO" />
+    <property name="fecha_nacimiento" type="date" column="EMPFECHA_NACIMIENTO" />
+    <property name="salario" type="double" column="EMPSALARIO" />
+  </class>
+</hibernate-mapping>
