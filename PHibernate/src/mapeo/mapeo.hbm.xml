@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="modelo.Contacto" table="CONTACTOS">
+        <id column="CONID" name="id" type="string">
+            <generator class="identity"/>
+        </id>
+        <property column="CONNOMBRE" name="nombre" type="string"
+          not-null="true"/>
+        <property column="CONEMAIL" name="email" type="string" not-null="true"/>
+        <property column="CONTELEFONO" name="telefono" type="integer"
+          not-null="true"/>
+        <property column="CONFECHA" name="fecha" type="date" not-null="true"/>
+        <property column="CONHORA" name="hora" type="time" not-null="true"/>
+    </class>
+</hibernate-mapping>
