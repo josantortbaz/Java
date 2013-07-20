@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!-- parámetros para la conexion a la base de datos -->
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/prueba</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">toor</property>
+    <!-- Configuración del pool interno -->
+    <property name="hibernate.connection.pool_size">1</property>
+    <!-- Dialecto de la base de datos -->
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <!-- Otras propiedades importantes -->
+    <property name="hibernate.show_sql">true</property>
+    <!-- Quitamos la linea de configuracion del hbm2ddl para que no se cree o 
+    destruya la tabla y, por tanto, deje de haber contenido en ella.
+        <property name="hibernate.hbm2ddl.auto">create</property>
+    -->
+    <!-- Archivos de mapeo -->
+    <mapping resource="mapeo/Empleado.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
