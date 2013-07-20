@@ -5,7 +5,7 @@
 package controlador.action;
 
 import DAO.EmpleadoDAO;
-import controlador.form.EmpleadoActionForm;
+import controlador.form.EmpleadoMuestraActionForm;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +23,7 @@ public class EmpleadoMuestraAction extends org.apache.struts.action.Action {
 
     /* forward name="success" path="" */
     private static final String MUESTRA = "muestra";
+    private static final String NOENCUENTRA = "noEncuentra";
 
     /**
      * This is the action called from the Struts framework.
@@ -41,10 +42,15 @@ public class EmpleadoMuestraAction extends org.apache.struts.action.Action {
         
         EmpleadoDAO ce = new EmpleadoDAO();
         
-        EmpleadoActionForm ef = (EmpleadoActionForm) form;
+        EmpleadoMuestraActionForm ef = (EmpleadoMuestraActionForm) form;
+        
         String apellido = ef.getApellido();
         
         Empleado encontrado = ce.obtenEmpleado(apellido);
+        
+        if (encontrado == null) {
+            return mapping.findForward(NOENCUENTRA);
+        }
         
         request.setAttribute("empleado", encontrado);
         

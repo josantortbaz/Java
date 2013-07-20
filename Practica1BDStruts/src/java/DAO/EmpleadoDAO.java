@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import java.util.List;
 import modelo.Empleado;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -34,7 +35,10 @@ public class EmpleadoDAO {
         try {
             iniciaOperacion();
             /* Si hay varios resultados, devolvemos siempre el primero */
-            emp = (Empleado) sesion.createQuery(query).list().get(0);
+             List<Empleado> lista= sesion.createQuery(query).list();
+             if (lista.size() > 0) {
+                 emp = lista.get(0);
+             }
         } finally {
             sesion.close();
         }

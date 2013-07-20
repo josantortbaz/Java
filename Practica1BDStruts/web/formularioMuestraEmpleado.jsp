@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,11 +15,13 @@
         <title><bean:message key="formulario.muestra.title"/></title>
     </head>
     <body>
-        <div align="center">
+        <div align="center">            
             <h1><bean:message key="formulario.muestra.heading"/></h1>
-            <input type="text" name="apellido"/>
-            <input type="submit" value="<bean:message key="formulario.muestra.boton"/>"
-                   name="buscaEmpleado"/>
+            <form action="EmpleadoMuestraAction.do" method="post">
+                <input type="text" name="apellido"/>
+                <input type="submit" name="buscaEmpleado" 
+                       value="<bean:message key="formulario.muestra.boton"/>"/>
+            </form>
             <html:errors property="apellido" />
         </div>
     </body>

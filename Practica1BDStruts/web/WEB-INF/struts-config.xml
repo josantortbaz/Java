@@ -7,7 +7,9 @@
 
 <struts-config>
     <form-beans>
-        <form-bean name="EmpleadoActionForm" type="controlador.form.EmpleadoActionForm"/>    
+        <form-bean name="EmpleadoActionForm" type="controlador.form.EmpleadoActionForm"/>
+        <form-bean name="EmpleadoMuestraActionForm" 
+                   type="controlador.form.EmpleadoMuestraActionForm"/>    
     </form-beans>
     
     <global-exceptions>
@@ -19,9 +21,11 @@
     </global-forwards>
 
     <action-mappings>
-        <action input="/formularioMuestraEmpleado.jsp" name="EmpleadoActionForm" path="/EmpleadoMuestraAction" 
-                scope="session" type="controlador.action.EmpleadoMuestraAction" validate="false"> 
+        <action input="/formularioMuestraEmpleado.jsp" name="EmpleadoMuestraActionForm" 
+                path="/EmpleadoMuestraAction" scope="session" 
+                type="controlador.action.EmpleadoMuestraAction"> 
             <forward name="muestra" path="/muestraEmpleado.jsp" />
+            <forward name="noEncuentra" path="/empleadoNoEncontrado.jsp" />
         </action>
         
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>

@@ -6,7 +6,6 @@ package controlador.form;
 
 import java.sql.Date;
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
@@ -16,7 +15,7 @@ import org.apache.struts.action.ActionMessage;
  * @author josea
  */
 public class EmpleadoActionForm extends org.apache.struts.action.ActionForm {
-    
+
     private String codigo, nombre, apellido;
     private Date fnacimiento;
     private float salario;
@@ -60,7 +59,7 @@ public class EmpleadoActionForm extends org.apache.struts.action.ActionForm {
     public void setSalario(float salario) {
         this.salario = salario;
     }
-    
+
     /**
      *
      */
@@ -68,7 +67,7 @@ public class EmpleadoActionForm extends org.apache.struts.action.ActionForm {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
     /**
      * This is the action called from the Struts framework.
      *

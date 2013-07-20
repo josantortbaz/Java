@@ -37,6 +37,7 @@
                     <td><bean:write name="empleado" property="salario" /></td>
                 </tr>
             </table>
+            <br>
             <a href="/Practica1BDStruts/index.jsp">
                 <bean:message key="welcome.volver" />
             </a>
