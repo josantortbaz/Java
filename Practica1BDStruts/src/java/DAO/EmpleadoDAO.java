@@ -4,6 +4,8 @@
  */
 package DAO;
 
+import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import modelo.Empleado;
 import org.hibernate.HibernateException;
@@ -18,6 +20,7 @@ import util.HibernateUtil;
 public class EmpleadoDAO {
     private Session sesion;
     private Transaction tx;
+    
 
     private void iniciaOperacion() throws HibernateException {
         sesion = HibernateUtil.getSessionFactory().openSession();
@@ -43,5 +46,51 @@ public class EmpleadoDAO {
             sesion.close();
         }
         return emp;
+    }
+    
+    public List<Empleado> obtenEmpleados () throws HibernateException {
+        String query = "from Empleado emp";
+        List<Empleado> lista = new ArrayList<Empleado>();
+        try {
+            iniciaOperacion();
+            /* Si hay varios resultados, devolvemos siempre el primero */
+             lista= sesion.createQuery(query).list();
+        } finally {
+            sesion.close();
+        }
+        return lista;
+    }
+    
+    public Empleado insertaEmpleado (Empleado e) throws HibernateException {
+        Empleado emp = e;
+        try {
+            iniciaOperacion();
+            sesion.saveOrUpdate(e);            
+        } catch (Exception ex) {
+            emp = null;
+        } finally {
+            tx.commit();
+            sesion.close();
+        }
+        return emp;
+    }
+    
+    public List<Empleado> eliminaEmpleado (String codigo) throws HibernateException {
+        Empleado e;
+        String query = "from Empleado emp where emp.codigo = '" + codigo + "'";
+        try {
+            iniciaOperacion();
+            List<Empleado> lista= sesion.createQuery(query).list();
+             if (lista.size() > 0) {
+                 e = lista.get(0);
+                 sesion.delete(e);
+             } else {
+                 return null;
+             }
+        } finally {
+            tx.commit();
+            sesion.close();
+        }
+        return obtenEmpleados();
     }
 }

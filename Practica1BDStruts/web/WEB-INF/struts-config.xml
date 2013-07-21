@@ -7,9 +7,20 @@
 
 <struts-config>
     <form-beans>
+        <!-- Form genérico de empleados: -->
         <form-bean name="EmpleadoActionForm" type="controlador.form.EmpleadoActionForm"/>
+        
+        <!-- Form para mostrar un empleado -->
         <form-bean name="EmpleadoMuestraActionForm" 
-                   type="controlador.form.EmpleadoMuestraActionForm"/>    
+                   type="controlador.form.EmpleadoMuestraActionForm"/>   
+        
+        <!-- Form para insertar un empleado -->
+        <form-bean name="EmpleadoInsertaActionForm" 
+                   type="controlador.form.EmpleadoInsertaActionForm"/>
+                
+        <!-- Form para eliminar un empleado -->
+        <form-bean name="EmpleadoEliminaActionForm" 
+                   type="controlador.form.EmpleadoEliminaActionForm"/>
     </form-beans>
     
     <global-exceptions>
@@ -21,6 +32,10 @@
     </global-forwards>
 
     <action-mappings>
+        <!-- Action para mostrar el indice al cargar el index.jsp-->
+        <action path="/Welcome" forward="/welcomeStruts.jsp"/>
+        
+        <!-- Action para mostrar un empleado -->
         <action input="/formularioMuestraEmpleado.jsp" name="EmpleadoMuestraActionForm" 
                 path="/EmpleadoMuestraAction" scope="session" 
                 type="controlador.action.EmpleadoMuestraAction"> 
@@ -28,7 +43,30 @@
             <forward name="noEncuentra" path="/empleadoNoEncontrado.jsp" />
         </action>
         
-        <action path="/Welcome" forward="/welcomeStruts.jsp"/>
+        <!-- Action para añadir un empleado -->
+        <action input="/formularioInsertaEmpleado.jsp" name="EmpleadoInsertaActionForm" 
+                path="/EmpleadoInsertaAction" scope="session" 
+                type="controlador.action.EmpleadoInsertaAction"> 
+            <forward name="inserta" path="/muestraEmpleado.jsp" />
+            <forward name="noInserta" path="/empleadoNoInsertado.jsp" />
+        </action>
+        
+        <!-- Action para eliminar un empleado -->
+        <action input="/formularioEliminaEmpleado.jsp" name="EmpleadoEliminaActionForm" 
+                path="/EmpleadoEliminaAction" scope="session" 
+                type="controlador.action.EmpleadoEliminaAction"> 
+            <forward name="elimina" path="/listaEmpleados.jsp" />
+            <forward name="noElimina" path="/empleadoNoEncontrado.jsp" />
+        </action>
+        
+        <!-- Action para listar los empleados -->
+        <action input="/formularioListaEmpleados.jsp" name="EmpleadoActionForm" 
+                path="/EmpleadosListaAction" scope="session" 
+                type="controlador.action.EmpleadosListaAction"> 
+            <forward name="lista" path="/listaEmpleados.jsp" />
+        </action>      
+        
+          
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

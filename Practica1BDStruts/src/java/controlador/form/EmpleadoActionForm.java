@@ -65,33 +65,6 @@ public class EmpleadoActionForm extends org.apache.struts.action.ActionForm {
      */
     public EmpleadoActionForm() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
-    /**
-     * This is the action called from the Struts framework.
-     *
-     * @param mapping The ActionMapping used to select this instance.
-     * @param request The HTTP Request we are processing.
-     * @return
-     */
-    public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-        ActionErrors errors = new ActionErrors();
-        if (getCodigo() == null || getCodigo().length() < 1) {
-            errors.add("codigo", new ActionMessage("error.codigo.required"));
-        }
-        if (getNombre() == null || getNombre().length() < 1) {
-            errors.add("nombre", new ActionMessage("error.nombre.required"));
-        }
-        if (getApellido() == null || getApellido().length() < 1) {
-            errors.add("apellido", new ActionMessage("error.apellido.required"));
-        }
-        if (getFnacimiento() == null) {
-            errors.add("fnacimiento", new ActionMessage("error.fnacimiento.required"));
-        }
-        if (getSalario() == 0 || getSalario() < 0) {
-            errors.add("salario", new ActionMessage("error.salario.required"));
-        }
-        return errors;
-    }
 }

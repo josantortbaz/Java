@@ -24,20 +24,22 @@
 
             <h3><bean:message key="welcome.heading"/></h3>
             <p><bean:message key="welcome.message"/></p>
-            
+
             <p><a href="/Practica1BDStruts/formularioMuestraEmpleado.jsp">
-                <bean:message key="welcome.consultar"/>
-            </a></p>
+                    <bean:message key="welcome.consultar"/>
+                </a></p>
             <p><a href="/Practica1BDStruts/formularioEliminaEmpleado.jsp">
-                <bean:message key="welcome.eliminar"/>
-            </a></p>
+                    <bean:message key="welcome.eliminar"/>
+                </a></p>
             <p><a href="/Practica1BDStruts/formularioListaEmpleados.jsp">
-                <bean:message key="welcome.listar"/>
-            </a></p>            
-            <p><a href="/Practica1BDStruts/formularioAnadirEmpleado.jsp">
-                <bean:message key="welcome.anadir"/>
-            </a></p>
-            
+                    <bean:message key="welcome.listar"/>
+                </a></p>            
+            <p>
+                <a href="/Practica1BDStruts/formularioInsertaEmpleado.jsp">
+                    <bean:message key="welcome.insertar"/>
+                </a>
+            </p>
+
         </div>
     </body>
 </html:html>
